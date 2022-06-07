@@ -25,7 +25,7 @@ public class FloatingText : MonoBehaviour
         go.SetActive(active);
     }
 
-    private void UpdateFloatingText()
+    public void UpdateFloatingText()
     {
         if (!active)
         {
