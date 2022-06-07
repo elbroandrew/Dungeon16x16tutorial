@@ -10,6 +10,16 @@ public class FloatingTextManager : MonoBehaviour
 
     private List<FloatingText> floatingTexts = new List<FloatingText> ();
 
+    public void Show(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    {
+        FloatingText floatingText = GetFloatingText();
+
+        floatingText.txt.text = msg;
+        floatingText.txt.fontSize = fontSize;
+        floatingText.txt.color = color;
+        floatingText.go.transform.position = Camera.main.WorldToScreenPoint(position);  //show text in screen coords.
+    }
+
 
     private FloatingText GetFloatingText()
     {
