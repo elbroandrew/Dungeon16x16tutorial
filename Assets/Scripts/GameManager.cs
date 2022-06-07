@@ -1,13 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
    public static GameManager instance;
     private void Awake()
     {
-        instance = this; //equals to the first game manager that found on the scene. (If I create an instance of this in another script).
+        if (GameManager.instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        PlayerPrefs.DeleteAll();
+
+
+        instance = this;
+
+        SceneManager.sceneLoaded += LoadState;
+        DontDestroyOnLoad(gameObject);
+
     }
 
     //Contains resources
@@ -36,8 +50,13 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("SaveState", s);
     }
 
-    public void LoadState()
+    public void LoadState(Scene s, LoadSceneMode mode)
     {
+        if (!PlayerPrefs.HasKey("SaveState"))
+        {
+            return;
+        }
+
         string[] data = PlayerPrefs.GetString("SaveState").Split('|');  //здесь одинарные кавычки
         
         //TODO: Change player skin

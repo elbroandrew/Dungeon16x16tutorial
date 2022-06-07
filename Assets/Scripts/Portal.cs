@@ -11,6 +11,7 @@ public class Portal : Collidable
     {
         if (coll.name == "Player")
         {
+            GameManager.instance.SaveState();
             //teleport to another random scene
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
 
