@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour
     //Handle state
     public void SaveState()
     {
-
+        string s = "";
+        PlayerPrefs.SetString("SaveState", s);
     }
 
     public void LoadState()
     {
+        Debug.Log("LoadState");
 
     }
 
