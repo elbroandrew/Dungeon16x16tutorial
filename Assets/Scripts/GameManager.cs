@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     public void SaveState()
     {
         string s = "";
+        s += "0" + "|";
+        s += pesos.ToString() + "|";
+        s += experience.ToString() + "|";
+        s += "0";
+
         PlayerPrefs.SetString("SaveState", s);
     }
 
