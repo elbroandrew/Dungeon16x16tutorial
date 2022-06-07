@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        PlayerPrefs.DeleteAll();
-
-
         instance = this;
 
         SceneManager.sceneLoaded += LoadState;
