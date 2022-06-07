@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         string s = "";
         s += "0" + "|";
         s += pesos.ToString() + "|";
-        s += experience.ToString() + "|";
+        s += experience.ToString() + "|";  //здесь двойные кавычки
         s += "0";
 
         PlayerPrefs.SetString("SaveState", s);
@@ -38,6 +38,13 @@ public class GameManager : MonoBehaviour
 
     public void LoadState()
     {
+        string[] data = PlayerPrefs.GetString("SaveState").Split('|');  //здесь одинарные кавычки
+        
+        //TODO: Change player skin
+        pesos = int.Parse(data[1]);
+        experience = int.Parse(data[2]);
+        //TODO: Change weapon level
+
         Debug.Log("LoadState");
 
     }
